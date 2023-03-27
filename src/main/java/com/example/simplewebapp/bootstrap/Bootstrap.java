@@ -56,6 +56,7 @@ public class Bootstrap implements CommandLineRunner {
 		Publisher HpPublishSave = this.publisherRepository.save(HPPublish);
 		
 		HPSave.setPublishers(HpPublishSave);
+		HPSave2.setPublishers(HpPublishSave);
 		this.bookRepository.save(HPSave);
 		this.bookRepository.save(HPSave2);
 		
