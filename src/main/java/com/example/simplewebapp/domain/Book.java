@@ -23,12 +23,21 @@ public class Book {
 	private String isbn;
 	
 	@ManyToMany
-	@JoinTable(name = "authorBook", joinColumns = @JoinColumn(name = "bookId"), inverseJoinColumns = @JoinColumn(name = "authorId"))
+	@JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
 	public Set<Author> authors = new HashSet<>();
 	
 	@ManyToOne
 	public Publisher publishers;
 	
+	
+	public Publisher getPublishers() {
+		return publishers;
+	}
+
+	public void setPublishers(Publisher publishers) {
+		this.publishers = publishers;
+	}
+
 	public Set<Author> getAuthors() {
 		return authors;
 	}

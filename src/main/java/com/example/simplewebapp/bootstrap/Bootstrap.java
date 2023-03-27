@@ -47,11 +47,17 @@ public class Bootstrap implements CommandLineRunner {
 		Book HPSave = this.bookRepository.save(harryPotter);
 		Book HPSave2 = this.bookRepository.save(harryPotter2);
 		
-		JKRSave.getBooks().add(harryPotter);
-		JKRSave.getBooks().add(harryPotter2);
+		JKRSave.getBooks().add(HPSave);
+		JKRSave.getBooks().add(HPSave2);
+		HPSave.getAuthors().add(JKRSave);
+		HPSave2.getAuthors().add(JKRSave);
 		
 		this.authorRepository.save(JKRSave);
-		this.publisherRepository.save(HPPublish);
+		Publisher HpPublishSave = this.publisherRepository.save(HPPublish);
+		
+		HPSave.setPublishers(HpPublishSave);
+		this.bookRepository.save(HPSave);
+		this.bookRepository.save(HPSave2);
 		
 		System.out.println("Bootstrap");
 		System.out.println("Book : " + this.bookRepository.count());
